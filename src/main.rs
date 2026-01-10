@@ -40,9 +40,8 @@ The heap is:
 */
 
 fn main() {
-
     let numbers: [i32; 5] = [1, 2, 3, 4, 5];
-    println!("Number array: {:?}", numbers); 
+    println!("Number array: {:?}", numbers);
 
     // let mix = [1, 2, "apple", true];
     // println!("mix: {:?}", mix);
@@ -53,7 +52,7 @@ fn main() {
     // println!("all fruits: {:?} ", fruits);
 
     // now on to tuples:
-    let human: (String, i32, bool) = ( String::from("Alice")  , 30, false);  // or Alice.to_string()
+    let human: (String, i32, bool) = (String::from("Alice"), 30, false); // or Alice.to_string()
     print!("human: {:?} ", human);
 
     // array inside of tuple 4 different elements
@@ -67,26 +66,25 @@ fn main() {
          -  No heap involved anywhere in this example.
      */
 
-
     /*
-        My question regardin: let animals: &[&str] = &["lion", "tiger", "hippo"];
-        why cant we just reference with this syntax &[str] or [&str] instead of &[&str] ?
+    My question regardin: let animals: &[&str] = &["lion", "tiger", "hippo"];
+    why cant we just reference with this syntax &[str] or [&str] instead of &[&str] ?
 
-        Answer:  
-            - firstly str is an unsized type and cannot exist by itself in the memory
-            - secondly you cannot replace &[&str] with &[str] because a slice must point to element that have a known layhout and str does not.
+    Answer:
+        - firstly str is an unsized type and cannot exist by itself in the memory
+        - secondly you cannot replace &[&str] with &[str] because a slice must point to element that have a known layhout and str does not.
 
-            step 1:
-                # what str actually is:
-                    - str is NOT a normal type
-                    - str is a dynamiclaly sized type
-                    - its size is not known at compile time
-                    - it cannot be stored directly on the stack
-                    - it cannot be an element of an array
+        step 1:
+            # what str actually is:
+                - str is NOT a normal type
+                - str is a dynamiclaly sized type
+                - its size is not known at compile time
+                - it cannot be stored directly on the stack
+                - it cannot be an element of an array
 
-                    str has no size by itself
-                    
-        */
+                str has no size by itself
+
+    */
     let insanity = ("Hanif", 21, true, [1, 2, 3, 4, 5]);
     println!("let the insanity show me : {:?}", insanity);
 
@@ -95,5 +93,4 @@ fn main() {
     // however thats not the case at all, reference simply means borrowing an array memory space, and if I want the variable to OWN or Borrow data, apparently rust does not assume ownership, so as the developer I have to choose.
     let animals = ["lion", "tiger", "hippo"];
     println!("animals: {:?} ", animals)
-
 }

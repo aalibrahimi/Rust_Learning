@@ -3,4 +3,11 @@ name = "rust_learning"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "practice"
+path = "src/practice.rs"
+
+[[bin]]
+name ="learning_arrays"
+path = "src/learning_arrays.rs"
 [dependencies]
