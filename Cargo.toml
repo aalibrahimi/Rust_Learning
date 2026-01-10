@@ -10,4 +10,14 @@ path = "src/practice.rs"
 [[bin]]
 name ="learning_arrays"
 path = "src/learning_arrays.rs"
+
+
+[[bin]]
+name= "forLoop"
+path= "src/forLoop.rs"
+
+[[bin]]
+name="coding_problems"
+path="src/coding_problems.rs"
+
 [dependencies]
