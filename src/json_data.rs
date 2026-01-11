@@ -80,7 +80,9 @@ pub fn main() -> Result<(), Box<dyn Error>> {
 
 
     // next task is to filter out tall people
-    for person in &people {
+    let oldPerson = people.iter().filter(|p| { p.age > 25});
+    for person in oldPerson {
+        
         print!(
             "{} is {} years old and {} cm tall\n ",
             person.name, person.age, person.height_cm
