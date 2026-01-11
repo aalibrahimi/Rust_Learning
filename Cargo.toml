@@ -5,19 +5,23 @@ edition = "2024"
 
 [[bin]]
 name = "practice"
-path = "src/practice.rs"
+path = "src/BeginningPractice/practice.rs"
 
 [[bin]]
 name ="learning_arrays"
-path = "src/learning_arrays.rs"
+path = "src/BeginningPractice/learning_arrays.rs"
 
 
 [[bin]]
 name= "forLoop"
-path= "src/forLoop.rs"
+path= "src/BeginningPractice/forLoop.rs"
 
 [[bin]]
 name="coding_problems"
-path="src/coding_problems.rs"
+path="src/BeginningPractice/coding_problems.rs"
 
 [dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+
