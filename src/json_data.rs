@@ -7,43 +7,43 @@ use std::fs::File;
 
 // whats happening:
 /*
-    Deserialize tells rust: this struct can be built from json
-    Field names must match json keyhs
-    types must be compatible
- */
+   Deserialize tells rust: this struct can be built from json
+   Field names must match json keyhs
+   types must be compatible
+*/
 #[derive(Debug, Deserialize)]
-struct Person{
+struct Person {
     name: String,
     age: u32,
-    height_cm: f64
+    height_cm: f64,
 }
 // Result<(), Box<dyn Error>>   and what it means?
 /*
-    it means this function can succeed or fail.
-    ()
-    - this () is the success value and it means "nothing meaningful to return - just sucess".
-    - so Ok(()) means everything worked
+   it means this function can succeed or fail.
+   ()
+   - this () is the success value and it means "nothing meaningful to return - just sucess".
+   - so Ok(()) means everything worked
 
-    Box<dyn Error> 
-    this is the error value
-    - it means "if something fails, return anyu kind of error"
-    Error -> a standard error trait
-    dyn -> dynamic ( many possible error types )
-    Box -> put it on the heap so they all fit the same type
+   Box<dyn Error>
+   this is the error value
+   - it means "if something fails, return anyu kind of error"
+   Error -> a standard error trait
+   dyn -> dynamic ( many possible error types )
+   Box -> put it on the heap so they all fit the same type
 
 
- */
+*/
 
 //  ============= 1. WHEN IS BOX NEEDED? ==============
 /*
-    The Problem: 
+    The Problem:
       -  Different error types have different sizes in memory. AND Rust must know the size of a value at compile time.
-      
+
       These are different types with different sizes.
         File::open(...)        → io::Error
         serde_json::from_reader(...) → serde_json::Error
 
-    The Solution: 
+    The Solution:
       - Box<T> stores the value on the heap and keeps only a fixed-size pointer on the stack.
         Box<dyn Error>
 
@@ -69,7 +69,7 @@ pub fn main() -> Result<(), Box<dyn Error>> {
     // The question mark means "Try to open this file. if it fails, stop immediately and return the error."
     let file = File::open("src/data.json")?;
 
-    /*  If I didn't have the shorthand ? I would have to write this: 
+    /*  If I didn't have the shorthand ? I would have to write this:
             let file = match File::open("data.json") {
             Ok(f) => f,
             Err(e) => return Err(Box::new(e)),
@@ -78,21 +78,17 @@ pub fn main() -> Result<(), Box<dyn Error>> {
      */
     let people: Vec<Person> = serde_json::from_reader(file)?;
 
-
     // next task is to filter out tall people
-    let oldPerson = people.iter().filter(|p| { p.age > 25});
+    let oldPerson = people.iter().filter(|p| p.age > 25);
     for person in oldPerson {
-        
         print!(
             "{} is {} years old and {} cm tall\n ",
             person.name, person.age, person.height_cm
         );
-
     }
 
     Ok(())
 }
-
 
 /*
     Stack:  pointer (known size)
@@ -109,4 +105,4 @@ pub fn main() -> Result<(), Box<dyn Error>> {
             On the heap
            - The actual error object (size depends on the error type)
 
-*/ 
+*/

@@ -20,6 +20,14 @@ path= "src/BeginningPractice/forLoop.rs"
 name="coding_problems"
 path="src/BeginningPractice/coding_problems.rs"
 
+[[bin]]
+name="scopes"
+path="src/BeginningPractice/scopes.rs"
+
+
+[[bin]]
+name="function"
+path="src/BeginningPractice/function.rs"
 
 [[bin]]
 name= "json_data"

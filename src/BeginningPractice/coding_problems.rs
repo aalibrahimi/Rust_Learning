@@ -23,7 +23,7 @@ use std::collections::btree_map::Values;
 pub fn main() {
     categorizing_animals();
     let command_rules = command_log_processor(); // return array of message called rules
-    
+
     processing_logic(&command_rules);
 }
 

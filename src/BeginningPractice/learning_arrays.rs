@@ -32,8 +32,6 @@ pub fn test() {
     println!("string lit {}", singleString);
 }
 
-
-
 // let singleString : String = "blaze";
 // println!("name: {}", singleString);
 
